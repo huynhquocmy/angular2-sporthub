@@ -1,0 +1,13 @@
+<div class="article-editor">
+	<div class="popup-header">
+		<h3>Tiêu đề</h3>
+	</div>
+	<div class="popup-content">
+		<input class="input-title" [(ngModel)]="title" type="text" placeholder="Chủ đề của bài viết">
+	</div>
+	<div class="popup-footer">
+		<button (click)="close()" md-raised-button class="btn-white">Đóng</button>
+		<button (click)="save()" md-raised-button class="btn-green">Tiếp theo</button>
+	</div>
+
+</div>

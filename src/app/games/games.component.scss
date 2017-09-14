@@ -1,0 +1,95 @@
+@import '../assets/scss/base/variables.scss';
+.games-filter {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    h1 {
+    	text-transform: uppercase;
+    	margin: 50px 0;
+    }
+}
+.games {
+    padding-top: 65px;
+}
+
+.days {
+    display: flex;
+    justify-content: center;
+}
+
+.day {
+    padding: 10px;
+    border: 3px solid $color-base-green;
+    margin: 0 20px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    cursor: pointer;
+}
+
+.games-filter-item {
+    padding: 20px 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    flex-grow: 1;
+    margin: 10px;
+    label {
+    	margin-bottom: 30px;
+    	display: block;
+    	text-transform: uppercase;
+    	font-weight: bold;
+    }
+}
+
+.games-filter-item:first-child {
+    margin-left: 0 !important;
+}
+.games-filter-item:last-child {
+    margin-right: 0 !important;
+}
+
+.game-filter-items {
+	display: flex;
+}
+
+.size {
+    display: flex;
+    justify-content: center;
+}
+
+.size-item {
+    line-height: 60px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: 3px solid #2dad66;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 972px) {
+    .games-filter {
+        h1 {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+    }
+    .days {
+        display: block;
+    }
+
+    .day {
+        display: inline-block;
+        margin: 5px;
+        width: 52px;
+        height: 52px;
+        line-height: 52px;
+        font-size: 12px;
+    }
+    .game-filter-items {
+        display: block;
+    }
+}

@@ -1,0 +1,71 @@
+@import '../../assets/scss/base/variables.scss';
+.page {
+	min-height: calc(100vh - 65px);
+}
+.page-top {
+    text-align: left;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 5px solid gray;
+    h3 {
+        font-size: 17px;
+        color: gray;
+    }
+}
+.page-content {
+    margin-top: 40px;
+}
+.page-container {
+    width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 20px;
+    border: 1px solid #eee;
+    background-image: url('src/app/assets/images/article-bg.png');
+    h1 {
+        margin-bottom: 10px;
+    }
+}
+.component {
+    position: relative;
+    margin: 0 auto;
+    &:hover {
+        .item-actions {
+            opacity: 1;
+        }
+    }
+    img {
+        max-width: 100%;
+    }
+}
+.video-placeholder {
+    margin: 0 auto;
+    height: 480px;
+}
+.section-text {
+    margin: 50px 0;
+}
+.back-news {
+    margin-top: 10px;
+    transition: 0.3s;
+    label {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    &:hover {
+        color: $color-base-blue;
+    }
+}
+h1, h2, h3, p {
+    margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+    .video-placeholder {
+        height: 200px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+}

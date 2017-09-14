@@ -1,0 +1,28 @@
+<div class="comments">
+	<div class="comments-title">{{reviews.length}} Bình luận</div>
+	<div class="comments-list">
+		<div class="no-data-message" *ngIf="!reviews.length">Chưa có bình luận nào.</div>
+		<div class="comments-item" *ngFor="let review of reviews">
+			<div class="comments-item-avatar bg-image" [ngStyle]="{'background-image': 'url(' + imgURI + review.avatar + ')'}"></div>
+			<div class="comments-item-content">
+				<div class="comments-item-top">
+					<label *ngIf="type==='match'">
+						<strong style="top: -6px" (click)="selectUser(review.reviewerId)">{{review.fullName}}</strong>
+						<i class="fa fa-meh-o" *ngIf="review.rating===3"></i>
+						<i class="fa fa-smile-o" *ngIf="review.rating===5"></i>
+						<i class="fa fa-frown-o" *ngIf="review.rating===1"></i>
+					</label>
+					<label *ngIf="type!=='match'">
+						<strong (click)="selectUser(review.reviewerId)">{{review.fullName}}</strong>
+						<div class="stars-rating">
+							<span>{{review.rating}}</span>
+							<i class="fa fa-star active"></i>
+						</div>
+					</label>
+					<span>{{review.ratedAt | myFromNow}}</span>
+				</div>
+				<p>{{review.comment}}</p>
+			</div>
+		</div>
+	</div>
+</div>

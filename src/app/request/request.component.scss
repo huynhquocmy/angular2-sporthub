@@ -1,0 +1,60 @@
+@import '../assets/scss/base/variables.scss';
+.request {
+	margin: 0px auto;
+	width: 700px;
+	box-sizing: border-box;
+	border-radius: 10px;
+	min-height: calc(100vh - 165px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 63px;
+	h1 {
+		text-align: center;
+		margin: 30px 0;
+		font-size: 22px;
+	}
+}
+
+.request-container {
+	padding: 0 50px 50px;
+	background-color: #fafafa;
+}
+
+.request-form, .request-btn {
+    width: 400px;
+    margin: 0 auto;
+    h3 {
+    	margin-bottom: 0;
+    	/*text-align: center;*/
+    }
+    .form-item input {
+    	width: 100%;
+    	height: 40px;
+    }
+}
+
+.request-btn {
+	text-align: right;
+	margin-top: 20px;
+}
+
+.red-star {
+	margin-left: 5px;
+	line-height: 1;
+}
+
+@media screen and (max-width: 972px) {
+	.request-container {
+		margin: 40px 0 !important;
+		padding: 10px;
+		box-sizing: border-box;
+		text-align: center;
+		width: 90%;
+	}
+	.request-form, .request-btn {
+		h3 {
+			font-size: 15px;
+		}
+	}
+}

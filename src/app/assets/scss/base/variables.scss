@@ -1,0 +1,111 @@
+//
+// Global Variables
+// --------------------------------------------------
+// Variables closer to the top of the theme have more
+// impact on variables that inherit them further down.
+$color-base-while: #FFFFFF;
+$color-base-hover: #eaf7ff;
+$color-base-dark: #333333;
+$color-base-gray: #555555;
+$color-base-blue: #4B89DC;
+$color-base-rating: #01b0f1;
+$color-base-border: #F4f4f4;
+$color-base-red: #DB4453;
+$color-border: #f4f4f4;
+$color-base-green: #2dad66;
+$color-base-green-active: #92d050;
+$color-base-yellow: #ffc000;
+$color-delete: rgb(199, 35, 35);
+$color-button: #555555;
+$color-button-hover: #444444;
+$color-bg: #eee;
+$color-bg--white: #FFFFFF;
+$color-primary: #4B89DC;
+$color-primary-hover: #0b7f9e;
+$color-selected: #1b434c;
+$color-black: #222222;
+$color-white: #FFFFFF;
+$color-lightwhite: #FAFAFA;
+$color-blue: $color-primary;
+$color-lightblue: #c2e1f5;
+$color-lightdark: #DDD;
+$color-lightest: #EEE;
+$color-lightgreen: #64DD17;
+$color-icon--twitter: RGB(64,153,214);
+$color-icon--facebook: RGB(49,79,141);
+$color-icon--instagram: RGB(33,72,111);
+$color-icon--google-plus: RGB(79,80,84);
+$color-black--primary: RGBA(0,0,0,0.8);
+$color-black--secondary: RGBA(0,0,0,0.54);
+$color-black--grayter: #C9C9C9;
+
+$color-white--secondary: RGBA(255,255,255,0.87);
+$color-white--primary: RGBA(255,255,255,0.54);
+$color-check: #43DA6F;
+
+$section-width: 60%;
+$section-left: 40%;
+$article-width: 740px;
+
+// 
+// Font style
+
+$font-family: 'Helvetica Neue';
+$font-size: 15px;
+$font-size--arrow: 16px;
+
+
+// Border radius common
+$border-radius: 4px;
+$border-radius-smallest: 2px;
+$border-radius-small: 3px;
+
+//
+// Page size variables
+
+$page-left: 250px;
+$page-left--max-width: 19%;
+$page-right: 80%;
+
+//
+// Sidebar styles
+$sidebar-bg: #555;
+
+
+// 
+// Text style
+$text-large: 22px;
+$text-title: 40px; 
+
+// Item size
+$item-2: 50%;
+$item-3: 33.33%;
+$item-4: 25%;
+$item-5: 20%;
+
+
+//
+// Images
+$avatar-size: 50px;
+
+//
+// Custom style
+$color__header__bg:  #222;
+$color__header__font: #FFF;
+$color__major: rgb(42,191,185);
+$font__main: 'Helvetica Neue';
+$color__bg: RGB(237,237,237);
+$common__color: $color-primary;
+$color__widget__bg: white;
+$color__font__post: grey;
+$font__size__post: 18px;
+
+//
+// Transition
+$transition-time: 0.5s;
+
+
+// BreakPoints
+$break-small: 480px;
+$break-medium: 768px;
+$break-large: 992px;

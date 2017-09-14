@@ -1,0 +1,164 @@
+<div class="game">
+	<div class="game-status status-{{match.status}}">
+		<div class="game-status-item" *ngIf="match.status == 1 || match.status == 2">
+			<label>Thời gian còn lại</label>
+			<div>
+				<i class="fa fa-clock-o"></i>
+				<span id="time-left"></span>
+			</div>
+		</div>
+
+		<div class="game-status-item" [ngClass]="{'color-green': match.status==3, 'color-red': match.status==4}" *ngIf="match.status !== 1 && match.status !== 2">
+			<label>Trạng Thái: </label>
+			<div>
+				<i *ngIf="match.status==3" class="fa fa-check"></i>
+				<i *ngIf="match.status==4" class="fa fa-trash"></i>
+				<span>{{match.status | myStatus}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="game-content" *ngIf="match.id">
+		<div class="game-content-left">
+			<div class="game-info">
+				<h2 *ngIf="venue">{{venue.name}} ({{match.gameTypeName}})</h2>
+				<ul>
+					<li>
+						<i class="fa fa-calendar"></i>
+						<span>{{match.startDate | date: 'dd/MM/yyyy'}}</span>
+					</li>
+					<li>
+						<i class="fa fa-clock-o"></i>
+						<span>{{match.startTime | myTimerange: match.duration}}</span>
+					</li>
+					<li>
+						<i class="fa fa-money"></i>
+						<span *ngIf="match.payPerPlayer"><strong>{{match.payPerPlayer}}k / {{typeLabel}}</strong></span>
+						<span *ngIf="!match.payPerPlayer"><strong>Miễn phí</strong></span>
+					</li>
+					<li *ngIf="match.maxParticipants">
+						<i class="fa fa-users"></i>
+						<span>Tối đa: <strong>{{match.maxParticipants}} {{typeLabel}}</strong></span>
+					</li>
+					<li *ngIf="match.minParticipants">
+						<i class="fa fa-users"></i>
+						<span>Tối thiểu: <strong>{{match.minParticipants}} {{typeLabel}}</strong></span>
+					</li>
+					<li>
+						<i class="fa fa-users"></i>
+						<span>Hiện tại: <strong>{{match.currentParticipants}} {{typeLabel}}</strong></span>
+					</li>
+					<li *ngIf="match.gameLevelId">
+						<i class="fa fa-id-card-o"></i>
+						<span>Ưu tiên: <strong>{{match.gameLevelId | myLevel}}</strong></span>
+					</li>
+					<li *ngIf="match.duration">
+						<i class="fa fa-hourglass"></i>
+						<span>Thời lượng: <strong>{{match.duration}} giờ</strong></span>
+					</li>
+
+					<li *ngIf="match.hostMobile" class="li-fullwidth">
+						<i class="fa fa-phone"></i>
+						<a href="tel:{{match.hostMobile}}"><span>Liên hệ: <strong>{{match.hostName}} ({{match.hostMobile}})</strong></span></a>
+					</li>
+					<div class="clear"></div>
+				</ul>
+			</div>
+			<div class="game-players">
+				<h2>Các {{typeLabel}} chơi hiện tại</h2>
+
+				<div *ngIf="!match.participantsList.length" class="no-data-message">Hiện tại chưa có {{typeLabel}} chơi tham gia.</div>
+
+				<div *ngIf="match.participantsList.length">
+					<ul *ngFor="let part of match.participantsList">
+						<li (click)="selectUser(part.id)" [ngClass]="{'color-green': match.hostId === part.id}">
+							<i *ngIf="part.id !== match.hostId" class="fa fa-user-o"></i>
+							<i *ngIf="part.id === match.hostId" class="fa fa-home"></i>
+							<span>{{part.fullName}} (x{{part.companies}})</span>
+						</li>
+					</ul>
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="game-players" *ngIf="match.description">
+				<h2>Ghi chú</h2>
+				<pre>
+					{{match.description}}
+				</pre>
+			</div>
+		</div>
+		<div class="game-btn" *ngIf="match.status == 1 || match.status == 2">
+			<div class="game-form box-shadow" *ngIf="!canReview && (!limit || (match.currentParticipants < match.maxParticipants))">
+				<label>Số {{typeLabel}} tham gia</label>
+				<input min="1" max="10" type="number" maxlength="2" mdInput [(ngModel)]="data.companies" name="min">
+				<button class="btn--white" md-raised-button (click)="joinGame()">Tham gia</button>
+			</div>
+
+			<div class="game-form box-shadow" *ngIf="canReview">
+				<label>Cập nhật số {{typeLabel}} tham gia</label>
+				<input min="1" max="10" type="number" maxlength="2" mdInput [(ngModel)]="data.companies" name="min">
+				<button class="btn--white" md-raised-button (click)="joinGame()">Cập nhật</button>
+			</div>
+
+			<div *ngIf="!canReview && limit && (match.currentParticipants >= match.maxParticipants)" class="game-form">Hiện tại đã đủ {{typeLabel}} tham gia.</div>
+
+			<div class="game-cancel game-form box-shadow" *ngIf="canReview">
+				<button class="btn--red" md-raised-button (click)="confirm()">Hủy Tham gia</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="game-reviews" *ngIf="match.status > 2 && canReview">
+		<h1 *ngIf="!userReview">Trận đấu của bạn diễn ra như thế nào ?</h1>
+		<h1 *ngIf="userReview">Bạn đã review trận đấu này.</h1>
+		<div class="game-reviews-icons" [ngClass]="{'disabled': userReview}">
+
+			<div class="game-reviews-icon" [ngClass]="{'active': review.rating==1}" (click)="reviewSelect(1)">
+				<i class="fa fa-frown-o"></i>
+				<span>Xấu</span>
+			</div>
+
+			<div class="game-reviews-icon" [ngClass]="{'active': review.rating==3}" (click)="reviewSelect(3)">
+				<i class="fa fa-meh-o"></i>
+				<span>Bình thường</span>
+			</div>
+
+			<div class="game-reviews-icon" [ngClass]="{'active': review.rating==5}" (click)="reviewSelect(5)" >
+				<i class="fa fa-smile-o"></i>
+				<span>Vui vẻ</span>
+			</div>
+		</div>
+		<div class="game-reviews-comment" *ngIf="!userReview">
+			<div>
+				<textarea [(ngModel)]="review.comment" placeholder="Viết đánh giá của bạn cho trận đấu này"></textarea>
+				<div class="game-reviews-btns">
+					<button md-raised-button class="btn-green" (click)="reviewComment()">Gởi bình luận</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="game-more">
+		<button md-raised-button class="btn-white" (click)="goBack()">Xem các trận khác</button>
+		<!-- <span style="flex-grow: 1"></span> -->
+		<button *ngIf="canEdit && match.status < 3" md-raised-button class="btn-green" (click)="onEditMatch(match.id)">
+			<i class="fa fa-edit"></i>
+			<span>Thay đổi</span>
+		</button>
+		<share *ngIf="match.id" [match]="match"></share>
+	</div>
+
+	<user-comments *ngIf="match.id" [type]="'match'" [match]="match"></user-comments>
+
+	<div class="game-map" id="game-map">
+		<!-- <sebm-google-map [draggableCursor]="false" [scrollwheel]="false" [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+			<sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+		</sebm-google-map> -->
+	</div>
+
+	<div class="game-description"></div>
+
+	<div class="loading" *ngIf="loading">
+		<div class="loading-mask"></div>
+		<img src="src/app/assets/images/loading3.gif">
+	</div>
+</div>

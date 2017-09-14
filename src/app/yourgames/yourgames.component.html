@@ -1,0 +1,122 @@
+<div class="yourgames">
+
+	<div class="yourgames-top">
+		<div class="top-container">
+			<div class="top-title">{{LANG.NEXT_MATCH}}</div>
+			<div style="padding: 50px 0" *ngIf="!nextGame.id" class="nodata-message">Không có trận đấu nào.</div>
+			<div class="top-content" *ngIf="nextGame.id">
+				<div class="top-left">
+					<h1>{{nextGame.venueName}} ({{nextGame.gameTypeName}})</h1>
+					<div class="top-item">
+						<label>{{LANG.HOST_NAME}} :</label>
+						<span>{{nextGame.hostName}}</span>
+					</div>
+					<div class="top-item">
+						<label>{{LANG.CURRENT_PARTICIPANTS}} :</label>
+						<span>{{nextGame.currentParticipants}}</span>
+					</div>
+				</div>
+				<div class="top-right">
+					<div class="top-item">
+						<i class="fa fa-calendar"></i>
+						<span>{{nextGame.startDate}}</span>
+					</div>
+					<div class="top-item">
+						<i class="fa fa-clock-o"></i>
+						<span>{{nextGame.startTime | myTimerange: nextGame.duration}}</span>
+					</div>
+					<div class="top-item">
+						<i class="fa fa-map-marker"></i>
+						<span>{{nextGame.venueAddress}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="yourgames-content">
+		<div class="yourgames-area animated slideInRight" [hidden]="mode!==1">
+			<div class="content-matches-title">
+				<h2 class="content-title">Trận đấu bạn tham gia</h2>
+				<button md-raised-button (click)="switchMode(2)" class="btn-green">
+					<span>Xem trận đấu bạn tổ chức</span>
+					<i class="fa fa-angle-right animated flash"></i>
+				</button>
+			</div>
+			<div class="content-matches">
+				<div class="row" *ngFor="let match of joinedMatches">
+					<div class="col">
+						<i class="fa fa-calendar"></i>
+						<span>{{LANG.DATE}}: {{match.startDate}}</span>
+						<br>
+						<i class="fa fa-clock-o"></i>
+						<span>{{match.startTime | myTimerange: match.duration}}</span>
+
+						<div class="status status-{{match.status}}">
+							<i class="fa fa-circle"></i>
+							<span>{{match.status | myStatus}}</span>
+						</div>
+					</div>
+					<div class="col">
+						<i class="fa fa-map-marker"></i>
+						<span>{{match.venueAddress}}</span>
+						<br>
+						<i class="fa fa-microchip"></i>
+						<span>{{match.venueName}} ({{match.gameTypeName}})</span>
+					</div>
+					<div class="col col-right">
+						<button md-raised-button (click)="onSelectMatch(match.id)" class="btn--white">
+							<span>{{LANG.VIEW}}</span>
+						</button>
+					</div>
+				</div>
+				<div *ngIf="!joinedMatches.length" class="nodata-message-gray">Không có trận đấu nào.</div>
+			</div>
+		</div>
+		<div class="yourgames-area animated slideInLeft" [hidden]="mode!==2">
+			<div class="content-matches-title">
+				<button md-raised-button (click)="switchMode(1)" class="btn-green">
+					<i class="fa fa-angle-left animated flash"></i>
+					<span>Xem trận đấu bạn tham gia</span>
+				</button>
+				<h2 style="text-align: right;" class="content-title">Trận đấu bạn tổ chức</h2>
+			</div>
+			<div class="content-matches">
+				<div *ngIf="!matches.length" class="nodata-message-gray">Không có trận đấu nào.</div>
+				<div class="row" *ngFor="let match of matches">
+					<div class="col">
+						<i class="fa fa-calendar"></i>
+						<span>Ngày: {{match.startDate}}</span>
+						<br>
+						<i class="fa fa-clock-o"></i>
+						<span>{{match.startTime | myTimerange: match.duration}}</span>
+
+						<div class="status status-{{match.status}}">
+							<i class="fa fa-circle"></i>
+							<span>{{match.status | myStatus}}</span>
+						</div>
+					</div>
+					<div class="col">
+						<i class="fa fa-map-marker"></i>
+						<span>{{match.venueAddress}}</span>
+						<br>
+						<i class="fa fa-microchip"></i>
+						<span>{{match.venueName}} ({{match.gameTypeName}})</span>
+					</div>
+					<div class="col col-right">
+						<button md-raised-button (click)="onSelectMatch(match.id)" class="btn--white">
+							<span>Xem</span>
+						</button>
+						<button [disabled]="match.status!==1" md-raised-button (click)="onEditMatch(match.id)" class="btn-green">
+							<span>Thay đổi</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="loading" *ngIf="loading">
+		<div class="loading-mask"></div>
+		<img src="src/app/assets/images/loading3.gif">
+	</div>
+</div>

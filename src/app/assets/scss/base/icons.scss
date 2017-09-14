@@ -1,0 +1,122 @@
+@import 'variables.scss';
+.icon {
+	img {
+		width: 16px;
+		height: 16px;
+		position: relative;
+		top: 3px;
+	}
+}
+
+.icon-medium {
+	img {
+		width: 25px;
+		height: 25px;
+		position: relative;
+        top: 0;
+	}
+}
+
+.icon-60 {
+	img {
+		width: 60px;
+		height: 60px;
+		position: relative;
+        top: 0;
+	}
+}
+
+.icon-40 {
+	img {
+		width: 40px;
+		height: 40px;
+		position: relative;
+        top: 0;
+	}
+}
+
+.icon-30 {
+	img, svg {
+		width: 30px;
+		height: 30px;
+		position: relative;
+	}
+}
+
+.icon-20 {
+	img, svg {
+		width: 20px;
+		height: 20px;
+		position: relative;
+	}
+}
+
+.icon-15 {
+	img, svg {
+		width: 15px;
+		height: 15px;
+		position: relative;
+	}
+}
+
+.icon-9 {
+	img, svg {
+		width: 9px;
+		height: 9px;
+		position: relative;
+	}
+}
+
+.icon-large {
+	img {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+.icon-toggle, icon-toggle {
+    outline: 0;
+}
+
+/* color scheme for icons*/
+.icon-grey {
+    svg path {
+        fill: #333;
+    }
+}
+
+.icon-white {
+    svg path {
+        fill: #fff;
+    }
+}
+
+.icon-white-add {
+    svg path {
+        stroke : #fff;
+        stroke-width: 8;
+
+    }
+}
+
+.icon-placeholder {
+    svg path {
+        fill: #999;
+    }
+}
+
+.icon-primary {
+    svg path {
+        fill: $color-primary;
+    }
+}
+
+.icon-blue {
+	svg path {
+	    fill: $color-base-blue;
+	}
+}
+
+.icon-left {
+	float: left;
+}

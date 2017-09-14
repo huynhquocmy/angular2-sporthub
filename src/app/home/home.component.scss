@@ -1,0 +1,278 @@
+@import '../assets/scss/base/variables.scss';
+.slides {
+    height: 90vh;
+}
+.slide {
+	display: block;
+}
+
+.slide-bg {
+	width: 100%;
+	height: 90vh;
+	background-size: cover;
+	background-position: center center;
+}
+.home-section {
+	position: relative;
+}
+
+.home-section-sliders {
+    height: calc(100% - 63px);
+}
+
+.home-container {
+    padding-top: 63px;
+    overflow: hidden;
+}
+
+.home-search {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-search-item {
+    background: white;
+    padding: 25px;
+    height: 80px;
+    box-sizing: border-box;
+}
+
+.home-search-btn {
+	padding: 0;
+	button {
+		padding: 22px;
+		font-size: 22px;
+        border-radius: 0;
+	}
+}
+
+.section-steps {
+    /*width: 1000px;*/
+    padding: 50px;
+    background-color: #eee;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    .home-steps {
+        margin: 0 auto;
+        width: 1000px;
+    }
+}
+
+.home-step {
+    margin-bottom: 50px;
+}
+
+.home-step-icon {
+    width: 50px;
+    background: white;
+    height: 50px;
+    box-sizing: border-box;
+    border: 2px solid $color-base-green;
+    color: $color-base-green;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.home-step-info {
+    padding-left: 20px;
+    display: inline-block;
+    width: calc(100% - 80px);
+    h2 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 30px;
+        color: #58585a;
+    }
+}
+
+.home-step-des {
+    font-size: 17px;
+}
+
+.imgs-holder {
+    display: flex;
+}
+
+
+.home-step:last-child {
+    margin-bottom: 0;
+}
+.home-title {
+	margin: 0;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+.home-section-center {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.home-testimonial {
+    background-color: #eee;
+    border-top: 1px solid #ddd;
+}
+
+.testimonials {
+    height: 65vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    .tos-pagination {
+        display: none;
+    }
+}
+
+.testimonial-avatar {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 8px solid $color-base-green;
+}
+
+.testimonial-say {
+	margin: 50px 10px;
+    text-align: center;
+	font-size: 20px;
+}
+
+.testimonial-info {
+	text-align: center;
+	font-size: 25px;
+	color: #555;
+	font-weight: bold;
+}
+
+.home-hostagame {
+    height: 60vh;
+    .mask-overlay {
+    }
+}
+
+.home-section-flex {
+    display: flex;
+}
+
+.home-hostagame-right {
+    width: 50%;
+    position: relative;
+    height: 100%;
+    img {
+        position: absolute;
+        top: -100px;
+        left: 30%;
+        max-height: 100%;
+    }
+}
+.home-hostagame-left {
+    position: relative;
+    height: 100%;
+    button {
+        padding: 10px;
+        font-size: 22px;
+    }
+}
+
+.home-section-matches {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.mask-text-sub {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.home-upcoming {
+    z-index: 10;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    padding: 5px 15px;
+    background: #2dad66;
+    display: table;
+    margin: 0 auto;
+    color: white;
+    text-align: right;
+    right: 0;
+    border-radius: 0px 0px 0px 5px;
+    h1 {
+        margin: 0;
+        font-size: 17px;
+    }
+}
+
+.home-upcoming-item {
+    font-size: 13px;
+}
+
+@media screen and (max-width: 972px) {
+    .testimonial-info {
+        display: none;
+    }
+    .section-steps {
+        padding-left: 10px;
+        padding-right: 10px;
+        h2 {
+            font-size: 18px;
+        }
+    }
+    .mask-content h1, .home-title {
+        font-size: 25px;
+    }
+
+    .home-upcoming {
+        display: none;
+    }
+
+    .home-step {
+        margin-bottom: 30px;
+    }
+
+    .home-title {
+        margin-bottom: 20px;
+    }
+
+    .home-howitworks, .home-section-matches {
+        padding: 50px 10px;
+    }
+
+    .home-search {
+        display: block;
+        width: 100%;
+        margin-top: 25px;
+    }
+    .mask-text-item {
+        h1 {
+            display: none;
+        }
+    }
+    .home-hostagame-left {
+        width: 100%;
+        button {
+            font-size: 17px;
+        }
+    }
+    .home-hostagame-right {
+        display: none;
+    }
+    .mask-text-sub, .testimonial-say {
+        font-size: 17px;
+    }
+    .home-search-btn {
+        button {
+            padding: 10px;
+            font-size: 15px;
+        }
+    }
+}

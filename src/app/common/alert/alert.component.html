@@ -1,0 +1,15 @@
+<!-- <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text._body }}</div> -->
+<div class="alert-popup-container" *ngIf="this.message">
+	<div class="alert-popup-content">{{this.message.data.content}}</div>
+	<div class="alert-popup-btns" *ngIf="message.type === 'alert'">
+		<button md-raised-button class="btn--green" (click)="close()">Ok</button>
+	</div>
+	<div class="alert-popup-btns" *ngIf="message.type === 'confirm' && !message.data.subType">
+		<button md-raised-button class="btn--white" (click)="closeSilent()">Bỏ qua</button>
+		<button md-raised-button class="btn--red" (click)="yes()">Đồng ý</button>
+	</div>
+	<div class="alert-popup-btns" *ngIf="message.type === 'confirm' && message.data.subType">
+		<button md-raised-button class="btn--red" (click)="closeSilent()">Bỏ qua</button>
+		<button md-raised-button class="btn--green" (click)="yes()">Đồng ý</button>
+	</div>
+</div>

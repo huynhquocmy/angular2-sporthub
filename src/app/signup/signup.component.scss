@@ -1,0 +1,60 @@
+@import '../assets/scss/base/variables.scss';
+.signup {
+	width: 350px;
+	h1 {
+		font-size: 22px;
+		margin: 0;
+		margin-bottom: 20px;
+
+	}
+	.mat-input-infix {
+	    border-top: 0px !important;
+	}
+}
+
+.signup-btn {
+	padding: 15px;
+	text-align: center;
+	margin-bottom: 20px;
+	border-radius: 4px;
+	cursor: pointer;
+	.fa {
+		margin-right: 10px;
+	}
+}
+
+.otp {
+	width: 300px;
+	h2 {
+		font-size: 18px;
+		margin: 0;
+		transition: 0.5s;
+		margin-bottom: 20px;
+
+	}
+}
+
+.signup-btn-fb {
+	color: white;
+	background-color: $color-icon--facebook;
+}
+
+.signup-btn-gg {
+	border: 1px solid #ddd;
+}
+
+form {
+	margin: 0;
+}
+
+.form-btn {
+	text-align: right;
+	margin-top: 18px;
+	button {
+		box-sizing: border-box;
+		width: 111px;
+		max-width: 45%;
+		font-size: 13px;
+		padding: 0px 2px;
+	}
+}

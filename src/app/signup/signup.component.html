@@ -1,0 +1,55 @@
+<div class="signup">
+	<!-- <div class="signup-btns">
+		<div class="signup-btn signup-btn-fb">
+			<i class="fa fa-facebook"></i>
+			<span>Sign up with Facebook</span>
+		</div>
+		<div class="signup-btn signup-btn-gg">
+			<i class="fa fa-google"></i>
+			<span>Sign up with Google</span>
+		</div>
+	</div> -->
+	<div class="signup-form">
+		<h1>Đăng Ký Tài Khoản</h1>
+		<form>
+			<div *ngIf="step===1">
+				<div class="form-item">
+					<div class="form-label">Họ tên</div>
+				  	<input mdInput name="fullName" [(ngModel)]="model.fullName">
+				  	<i class="fa fa-user-o"></i>
+				</div>
+
+				<div class="form-item">
+					<div class="form-label">Số điện thoại</div>
+				  	<input (focusout)="verifyInfo()" mdInput name="mobile" [(ngModel)]="model.mobile" >
+				  	<i class="fa fa-phone"></i>
+				</div>
+			</div>
+
+			<div *ngIf="step===2">
+				<!-- <div class="form-item">
+					<div class="form-label">Email</div>
+				  	<input (focusout)="verifyInfo()" mdInput name="email" autocomplete="off" [(ngModel)]="model.email">
+				  	<i class="fa fa-envelope-o"></i>
+				</div> -->
+
+				<div class="form-item">
+					<div class="form-label">Mật khẩu</div>
+				  	<input type="password" mdInput name="password" autocomplete="off" [(ngModel)]="model.password">
+				  	<i class="fa fa-lock"></i>
+				</div>
+			</div>
+			<div class="error-message">{{error | myCode}}</div>
+			<!-- <div class="link" (click)="openLogin()">Đã có tài khoản, đăng nhập ?</div> -->
+			<div class="form-btn" *ngIf="step===2">
+				<button type="button" md-raised-button class="btn--white" (click)="back()">Quay lại</button>
+				<button md-raised-button class="btn-green" (click)="signup()">Đăng ký</button>
+			</div>
+			<div class="form-btn" *ngIf="step===1">
+				<button type="button" md-raised-button class="btn--white" (click)="close()">Đóng</button>
+				<button md-raised-button class="btn-green" (click)="next()">Tiếp theo</button>
+			</div>
+
+		</form>
+	</div>
+</div>

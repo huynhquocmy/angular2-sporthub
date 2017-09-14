@@ -1,0 +1,37 @@
+<div class="games">
+	<div class="games-filter">
+		<h1>Chọn Game phù hợp với bạn</h1>
+		<div class="games-filter-item">
+			<label>Các Thứ trong tuần</label>
+			<div class="games-filter-item-value days">
+				<div [ngClass]="{'selected': day.selected}" class="day" *ngFor="let day of days" (click)="onSelectDays(day)">{{day.name}}</div>
+			</div>
+		</div>
+		<div class="game-filter-items">
+			<div class="games-filter-item">
+				<label>Ngày</label>
+				<div class="games-filter-item-value">
+					<material-datepicker cancelText="text" [rangeStart]="rangeStart" placeholder="Chọn ngày" dateFormat="YYYY-MM-DD" (onSelect)="onSelectDate()" [(date)]="date"></material-datepicker>
+				</div>
+			</div>
+			<div class="games-filter-item">
+				<label>Địa Điểm</label>
+				<div class="games-filter-item-value">
+					<md-select (ngModelChange)="filterGames()" placeholder="Địa điểm" [(ngModel)]="location">
+					   	<md-option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</md-option>
+					</md-select>
+				</div>
+			</div>
+			<div class="games-filter-item">
+				<label>Số Người Mỗi Đội</label>
+				<div class="games-filter-item-value size">
+					<div [ngClass]="{'selected': size.selected}" class="size-item" *ngFor="let size of gameTypes" (click)="selectActive(size)">{{size.name}}</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="games-list">
+		<matches [filters]="filters" [matches]="matches"></matches>
+	</div>
+</div>

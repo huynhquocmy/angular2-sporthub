@@ -1,0 +1,29 @@
+<div class="profile-bank">
+	<div class="profile-bank-container box-shaddow">
+		<h2>Thông Tin Tài Khoản</h2>
+		<div class="profile-bank-item">
+			<div class="form-label">Ngân Hàng</div>
+			<md-select [(ngModel)]="model.bankName">
+			   <md-option *ngFor="let bank of banks" [value]="bank.code">{{ bank.name }}</md-option>
+			</md-select>
+		</div>
+
+		<div class="profile-bank-item">
+			<div class="form-item">
+				<div class="form-label">Tên Chủ Thẻ</div>
+			  	<input mdInput name="bankuser" [(ngModel)]="model.userName">
+			</div>
+		</div>
+
+		<div class="profile-bank-item">
+			<div class="form-item">
+				<div class="form-label">Số Tài Khoản</div>
+			  	<input mdInput name="banknumber" [(ngModel)]="model.bankNumber">
+			</div>
+		</div>
+		<div class="profile-bank-item">
+			<button md-raised-button class="btn-green">Cập Nhật</button>
+			<button style="float: right" md-raised-button class="btn-green">Yêu Cầu Chuyển Khoản</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="otp">
+	<h2 class="color-green" [hidden]="!resent">Nhập mã xác nhận mới</h2>
+	<h2 *ngIf="!resent">Nhập mã xác nhận để hoàn tất</h2>
+	<div class="otp-form">
+		<div class="form-item">
+			<div class="form-label">Mã xác nhận</div>
+		  	<input mdInput name="otp" [(ngModel)]="otp">
+		  	<i class="fa fa-key"></i>
+		</div>
+		<div class="link" *ngIf="!resent" (click)="resendOtp()">Không nhận được tin nhắn, yêu cầu gởi lại ?</div>
+	</div>
+	<div style="margin-top: 10px;" class="error-message">{{error | myCode}}</div>
+	<div class="form-btn">
+		<button type="button" md-raised-button class="btn--red" (click)="close()">Bỏ qua</button>
+		<button md-raised-button class="btn-green" (click)="verify()">Xác nhận</button>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<div class="page">
+	<div class="page-container">
+		<div class="page-top">
+			<button md-raised-button class="btn-blue back" (click)="back()">
+				<i class="fa fa-arrow-left"></i>
+				<span>Back</span>
+			</button>
+			<h4 class="page-datetime">{{today}}</h4>
+			<div class="page-link">
+				<label>Page url</label>
+				<i class="fa fa-exclamation-circle"></i>
+				<span>https://sporthub.vn/news/</span>
+				<input style="background-color: #f4f4f4" disabled="disabled" type="text" name="" [(ngModel)]="path">
+			</div>
+			<div class="page-link">
+				<label>Page title</label>
+				<i class="fa fa-exclamation-circle"></i>
+				<input type="text" [(ngModel)]="page.title" name="page-title">
+			</div>
+		</div>
+		<div class="page-content">
+			<div class="page-components">
+				<div class="component" *ngFor="let item of components">
+					<Section [item]="item" [callback]="callback"></Section>
+					<div class="item-actions">
+						<div class="item-action" (click)="removeComponent(item)">
+							<i class="fa fa-trash"></i>
+						</div>
+						<div *ngIf="item.type === 'image'" class="item-action" (click)="pin(item)">
+							<i *ngIf="item.url === page.featured" class="fa fa-eye"></i>
+							<i *ngIf="item.url !== page.featured" class="fa fa-eye-slash"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-build">
+			<div class="page-build-line">
+				<hr>
+				<div class="page-build-plus">
+					<i class="fa fa-plus"></i>
+				</div>
+			</div>
+			<div class="page-build-tabs">
+				<div class="page-build-tab" (click)="addComponent('text')">
+					<i class="fa fa-pencil"></i>
+					<span>Text</span>
+				</div>
+				<div class="page-build-tab" (click)="addComponent('image')">
+					<i class="fa fa-image"></i>
+					<span>Image</span>
+				</div>
+				<div class="page-build-tab" (click)="addVideo()">
+					<i class="fa fa-video-camera"></i>
+					<span>Video</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-actions">
+		<div class="page-action" [ngClass]="{'active': page.isPublished}" (click)="publish()">
+			<i *ngIf="!page.isPublished" class="fa fa-lock"></i>
+			<i *ngIf="page.isPublished" class="fa fa-unlock"></i>
+			<span *ngIf="!page.isPublished">Publish</span>
+			<span *ngIf="page.isPublished">Published</span>
+		</div>
+		<div class="page-action" (click)="save()">
+			<i class="fa fa-save"></i>
+			<span>Save</span>
+		</div>
+		<div class="page-action page-action-favorite" [ngClass]="{'active': page.isFavorite}" (click)="toggleFavorite()">
+			<i class="fa fa-star"></i>
+			<span *ngIf="page.isFavorite">Favorited</span>
+			<span *ngIf="!page.isFavorite">Favorited</span>
+		</div>
+		<div class="page-action trash" (click)="delete()">
+			<i class="fa fa-trash"></i>
+			<span>Remove</span>
+		</div>
+	</div>
+</div>

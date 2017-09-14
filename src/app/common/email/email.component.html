@@ -1,0 +1,15 @@
+<div class="email email-request">
+	<div class="email-mask"></div>
+	<div class="email-content">
+		<img style="width: 200px;" src="./src/app/assets/images/sporthub-1.png">
+		<div class="email-item">
+			<p>Hey <strong>{{user.fullName}}</strong>, đăng ký email để nhận được những thông báo mới nhất từ Sporthub nhé. Cảm ơn bạn!</p>
+			<input mdInput type="text" name="email" placeholder="your-email@gmail.com" [(ngModel)]="user.email" />
+		</div>
+		<div class="btn-container">
+			<div class="link" (click)="done()">Không có địa chỉ email</div>
+			<button md-raised-button class="btn-white" (click)="later()">Để sau</button>
+			<button md-raised-button class="btn-green" (click)="update()">Gởi</button>
+		</div>
+	</div>
+</div>

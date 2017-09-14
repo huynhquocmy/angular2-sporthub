@@ -1,0 +1,45 @@
+<div class="request">
+	<div class="request-container box-shadow">
+		<h1 *ngIf="!verified">Quên mật khẩu ?</h1>
+
+		<div class="request-form" *ngIf="!verified">
+			<h3>Nhập số điện thoại của bạn</h3>
+			<div class="form-item">
+			  	<input mdInput name="custom" [(ngModel)]="model.custom">
+			</div>
+			<div class="error-message">{{error | myCode}}</div>
+		</div>
+
+		<div class="request-form" *ngIf="verified">
+			<h3>Nhập mã xác nhận và mật khẩu mới</h3>
+			<p>(Mã xác nhận đã được gởi qua tin nhắn!)</p>
+			<div class="form-item">
+				<div class="form-label">
+					<span>Mã xác nhận</span>
+					<span class="red-star"> *</span>
+				</div>
+			  	<input maxlength="6" mdInput name="otp" [(ngModel)]="model.otp">
+			</div>
+			<div class="form-item">
+				<div class="form-label">
+					<span>Mật khẩu</span>
+					<span class="red-star"> *</span>
+				</div>
+			  	<input type="password" mdInput name="password" [(ngModel)]="model.password">
+			</div>
+			<div class="form-item">
+				<div class="form-label">
+					<span>Lặp lại mật khẩu</span>
+					<span class="red-star"> *</span>
+				</div>
+			  	<input type="password" mdInput name="passwordAgain" [(ngModel)]="model.passwordAgain">
+			</div>
+			<div class="error-message">{{error | myCode}}</div>
+		</div>
+
+		<div class="request-btn">
+			<button *ngIf="!verified" md-raised-button class="btn-green" (click)="verifyInfo()">Xác nhận</button>
+			<button *ngIf="verified" md-raised-button class="btn-green" (click)="changePassword()">Đổi mật khẩu</button>
+		</div>
+	</div>
+</div>

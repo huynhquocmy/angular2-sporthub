@@ -1,0 +1,51 @@
+<div class="header-container">
+	<div class="header-logo" routerLink="/">
+		<img src="./src/app/assets/images/sporthub-1.png">
+	</div>
+	<div class="flex-grow"></div>
+
+	<div class="menu-container">
+		<div class="header-burger">
+			<img src="./src/app/assets/images/icon.png">
+		</div>
+		<div class="header-content">
+			<div class="header-item" *ngIf="user" routerLink="/your-games">
+				<i class="fa fa-soccer-ball-o" style="color: #2dad66"></i>
+				<span>{{LANG.YOUR_MATCHES}}</span>
+			</div>
+			<div class="header-item" routerLink="/host-game">
+				<i class="fa fa-connectdevelop"></i>
+				<span>{{LANG.HOST_MATCH}}</span>
+			</div>
+			<div class="header-item" routerLink="/games">
+				<i class="fa fa-soccer-ball-o"></i>
+				<span>{{LANG.GAMES}}</span>
+			</div>
+			<div class="header-item" *ngIf="!user" (click)="openSignin()">
+				<i class="fa fa-sign-in"></i>
+				<span>{{LANG.LOGIN}}</span>
+			</div>
+			<div class="header-item" *ngIf="!user" (click)="openSignup()">
+				<i class="fa fa-sign-out"></i>
+				<span>{{LANG.SIGNUP}}</span>
+			</div>
+			<div class="header-item header-profile" *ngIf="user">
+				<div class="user-info">
+					<i class="fa fa-user-o" *ngIf="!user.avatar"></i>
+					<div *ngIf="user.avatar" class="profile-img bg-image" [ngStyle]="{'background-image': 'url(' + imgURI + user.avatar + ')'}"></div>
+					<span>{{user.fullName}}</span>
+				</div>
+				<div class="header-menus">
+					<div class="header-menu" routerLink="/profile/general">
+						<i class="fa fa-user-o"></i>
+						<span>{{LANG.PROFILE}}</span>
+					</div>
+					<div class="header-menu" (click)="logout()">
+						<i class="fa fa-sign-out"></i>
+						<span>{{LANG.LOGOUT}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

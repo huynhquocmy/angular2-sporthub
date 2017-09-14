@@ -1,0 +1,187 @@
+<div class="host">
+	<div class="host-form-note" *ngIf="!isEdit">
+		<h2>{{LANG.NOTE}}</h2>
+		<ul>
+			<li><i class="fa fa-check"></i> Bạn phải <strong>đặt sân</strong> trước khi tổ chức trận đấu</li>
+			<li><i class="fa fa-check"></i> Đảm bảo tất cả các người tham gia hợp lệ đều được thi đấu</li>
+			<li><i class="fa fa-check"></i> Đảm bảo trận đấu diễn ra vui vẻ, fair play, không bạo lực</li>
+			<!-- <li><i class="fa fa-check"></i> Tiền của những người tham gia sẽ được chuyển khoản cho bạn sau khi trận đấu kết thúc 3 giờ</li> -->
+		</ul>
+	</div>
+
+	<div class="host-form-note" *ngIf="isEdit">
+		<h2 style="text-transform: uppercase;">Cập nhật thông tin trận đấu</h2>
+	</div>
+
+	<div class="host-form box-shadow">
+		<form>
+			<h1 style="font-size: 27px;">{{LANG.REQUIRED_INFO}}</h1>
+			<div class="host-form-item host-form-both">
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.gameTypeId && error}">
+					<div class="form-label">
+						<span>Chọn kiểu đấu</span>
+						<span class="red-star"> *</span>
+					</div>
+					<md-select name="game" [(ngModel)]="data.gameTypeId">
+					   <md-option *ngFor="let type of gameTypes" [value]="type.id">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<i class="fa fa-id-card-o"></i>
+						<span>Trình độ</span>
+					</div>
+					<md-select name="gameLevelId" [(ngModel)]="data.gameLevelId">
+					   	<md-option *ngFor="let type of gameLevels" [value]="type.id">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<span>Chọn kiểu tham gia</span>
+						<span class="red-star"> *</span>
+					</div>
+					<md-select name="typeOfJoin" [(ngModel)]="data.typeOfJoin" (ngModelChange)="changeJoinType()">
+					   <md-option *ngFor="let type of joinTypes" [value]="type.id">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<div class="host-form-item host-form-both">
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.startDateDisplay && error}">
+					<div class="form-label">
+						<i class="fa fa-calendar"></i>
+						<span>Ngày chơi</span>
+						<span class="red-star"> *</span>
+					</div>
+					<material-datepicker placeholder="Chọn ngày" dateFormat="YYYY-MM-DD" [(date)]="data.startDateDisplay"></material-datepicker>
+				</div>
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.startTime && error}">
+					<div class="form-label">
+						<i class="fa fa-clock-o"></i>
+						<span>Thời gian bắt đầu</span>
+						<span class="red-star"> *</span>
+					</div>
+					<md-select name="starttime" [(ngModel)]="data.startTime">
+					   <md-option *ngFor="let type of hours" [value]="type.code">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.duration && error}">
+					<div class="form-label">
+						<i class="fa fa-clock-o"></i>
+						<span>Thời gian trận đấu</span>
+						<span class="red-star"> *</span>
+					</div>
+					<md-select name="endtime" [(ngModel)]="data.duration">
+					   	<md-option *ngFor="let type of duration" [value]="type.code">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<div class="host-form-item host-form-both">
+				<div class="host-form-item-half">
+					<div class="form-label">Quận
+					</div>
+					<md-select name="location" [(ngModel)]="location" (ngModelChange)="loadVenues()">
+					   <md-option *ngFor="let type of locations" [value]="type.id">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.venueId && error}">
+					<div class="form-label">Chọn sân<span class="red-star"> *</span></div>
+				  	<!-- <input name="venue" mdInput [(ngModel)]="data.venueId"> -->
+				  	<md-select name="venue" [(ngModel)]="data.venueId">
+				  	   <md-option *ngFor="let type of venues" [value]="type.id">{{ type.name }}</md-option>
+				  	</md-select>
+				</div>
+
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.payPerPlayer && error}">
+					<div class="form-label">
+						<i class="fa fa-money"></i>
+						<span>Số tiền / 1 {{typeLabel}}</span>
+						<span class="red-star"> *</span>
+						<tip [type]="3"></tip>
+					</div>
+					<div class="form-item">
+					  	<input mdInput [(ngModel)]="data.payPerPlayer" name="payPerPlayer" type="number">
+					</div>
+				</div>
+				<div class="host-form-item-half" [ngClass]="{'error-highlight': !data.cutoffTime && error}">
+					<div class="form-label">
+						<i class="fa fa-clock-o"></i>
+						<span>Hạn chót thay đổi</span>
+						<span class="red-star"> *</span>
+						<tip [type]="1"></tip>
+					</div>
+					<md-select name="cutoffTime" [(ngModel)]="data.cutoffTime">
+					   	<md-option *ngFor="let type of times" [value]="type.code">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+			</div>
+
+			<h1 *ngIf="step >= 1" style="font-size: 27px;">{{LANG.OPTIONAL_INFO}}</h1>
+
+			<div class="host-form-item host-form-both" *ngIf="step >= 1">
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<i class="fa fa-user"></i>
+						<span>Số {{typeLabel}} tối thiểu</span>
+					</div>
+					<div class="form-item">
+					  	<input type="number" mdInput [(ngModel)]="data.minParticipants" name="min">
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<i class="fa fa-group"></i>
+						<span>Số {{typeLabel}} tối đa</span>
+					</div>
+					<div class="form-item">
+					  	<input type="number" mdInput [(ngModel)]="data.maxParticipants" name="max">
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<i class="fa fa-group"></i>
+						<span>Số {{typeLabel}} đã có</span>
+					</div>
+					<div class="form-item">
+					  	<input type="number" mdInput [(ngModel)]="data.initParticipants" name="init">
+					</div>
+				</div>
+			</div>
+
+			<div class="host-form-item" *ngIf="step >= 1">
+				<div class="host-form-item-half" style="display: flex;">
+					<md-checkbox name="autoCancel" [(ngModel)]="data.autoCancel">
+						<span>Tự động hủy</span>
+					</md-checkbox>
+					<tip [type]="2"></tip>
+				</div>
+			</div>
+
+			<div class="host-form-item" *ngIf="step >= 1">
+				<div class="form-label">Thông tin khác</div>
+				<textarea [(ngModel)]="data.description" name="description"></textarea>
+			</div>
+
+			<div class="error-message">{{error}}</div>
+			<div class="form-btn" style="display: flex;" *ngIf="step >= 1">
+				<button class="btn--green" *ngIf="!isEdit" md-raised-button (click)="hostGame()">Hoàn thành</button>
+
+				<button *ngIf="isEdit" class="btn--red" md-raised-button (click)="confirm()">Hủy trận đấu</button>
+
+				<button *ngIf="isEdit" class="btn--green" md-raised-button (click)="hostGame()">Cập nhật</button>
+			</div>
+
+			<div class="form-btn" *ngIf="step<1">
+				<button class="btn--green" md-raised-button (click)="next()">Tiếp</button>
+			</div>
+			<div style="clear: both;"></div>
+		</form>
+	</div>
+	<div class="loading" *ngIf="loading">
+		<div class="loading-mask"></div>
+		<img src="src/app/assets/images/loading3.gif">
+	</div>
+</div>

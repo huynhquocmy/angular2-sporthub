@@ -1,0 +1,35 @@
+<div class="user-comments">
+	<h1>Hỏi đáp và bình luận</h1>
+	<div class="user-comments-list">
+		<div class="user-comments-item" *ngFor="let comment of comments">
+			<div class="user-comments-avatar">
+				<img src="{{comment.avatar ? (imgURI + comment.avatar) : './src/app/assets/images/avatar.png'}}">
+			</div>
+			<div class="user-comments-content">
+				<div class="user-comments-info">
+					<div class="user-comments-message"><strong (click)="selectUser(comment.userId)" class="user-comments-name ">{{comment.fullName}}</strong>
+						<pre *ngIf="!comment.edit">{{comment.message}}</pre>
+						<textarea *ngIf="comment.edit" (ngModelChange)="checkHeight(comment.id)" id="textarea-{{comment.id}}" class="textarea-comment" (keyup.enter)="saveComment(comment)" [(ngModel)]="comment.message"></textarea>
+					</div>
+				</div>
+				<div class="user-comments-meta">
+					<div *ngIf="comment.userId == user.id && !comment.edit" class="user-comments-action" (click)="editComment(comment)">Sửa</div>
+					<div *ngIf="comment.userId == user.id && comment.edit" class="user-comments-action" (click)="saveComment(comment)">Xong</div>
+					<div *ngIf="comment.userId == user.id" class="user-comments-action" (click)="removeComment(comment)">Xoá</div>
+					<div class="user-comments-time">{{comment.commentedAt | myFromNow}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="user-comments-new">
+		<div class="user-comments-avatar">
+			<!-- <img src="./src/app/assets/images/avatar.png"> -->
+			<img src="{{(user && user.avatar) ? (imgURI + user.avatar) : './src/app/assets/images/avatar.png'}}">
+		</div>
+		<textarea id="textarea-new" (ngModelChange)="checkHeight('new')" class="desktop-only textarea-comment" (keyup.enter)="addComment()" [(ngModel)]="comment.message" name="message" placeholder="Viết bình luận của bạn..."></textarea>
+
+		<textarea id="textarea-new-mobile" (ngModelChange)="checkHeight('new-mobile')" class="mobile-only textarea-comment" [(ngModel)]="comment.message" name="message" placeholder="Viết bình luận của bạn..."></textarea>
+
+		<img class="send-button mobile-only" src="./src/app/assets/images/send-button.png" (click)="addComment()">
+	</div>
+</div>

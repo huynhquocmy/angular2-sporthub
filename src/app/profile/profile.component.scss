@@ -1,0 +1,54 @@
+@import '../assets/scss/base/variables.scss';
+.profile {
+	padding-top: 60px;
+	min-height: calc(100vh - 64px);
+	display: flex;
+}
+
+.profile-left {
+	width: 200px;
+	border-right: 3px solid $color-base-green;
+	position: fixed;
+    z-index: 100;
+    background: white;
+    top: 63px;
+}
+
+.profile-right {
+	flex-grow: 1;
+	border-left: 3px solid $color-base-green;
+	margin-left: -3px;
+	margin-left: 200px;
+}
+
+.profile-left-item {
+    padding: 20px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+    	background-color: $color-base-hover;
+    }
+}
+
+.profile-left-item.active {
+	background-color: $color-base-green !important;
+	color: white;
+}
+
+@media screen and (max-width: 972px) {
+	.profile {
+		display: block;
+	}
+	.profile-left {
+		position: static;
+		width: 100%;
+		border-right: 0;
+	}
+	.profile-right {
+		margin: 0;
+		border-left: 0;
+	}
+}

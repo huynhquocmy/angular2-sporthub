@@ -1,0 +1,43 @@
+<div class="matches-container">
+	<div class="matches">
+		<div class="nodata-message" *ngIf="!mates.length">Hiện tại không có trận đấu nào phù hợp với yêu cầu tìm kiếm của bạn.</div>
+		<div class="match-item bg-image" id="match-{{match.id}}" *ngFor="let match of mates" style="background-image: url('./src/app/assets/images/court-1.jpg">
+			<div class="home-mask">
+				<div class="mask-overlay"></div>
+				<div class="mask-content">
+					<div class="match-location">
+						<div class="match-location-name">{{match.venueName}}</div>
+					</div>
+					<div class="match-info">
+						<div class="match-info-item">
+							<!-- <span class="match-info-item-label">Loại Sân:</span> -->
+							<span class="match-info-item-value" style="font-weight: bold;font-size: 25px">{{match.gameTypeName}}</span>
+						</div>
+						<!-- <div class="match-info-item">
+							<span class="match-info-item-label">Hiện tại:</span>
+							<span class="match-info-item-value">{{match.currentParticipants}} người</span>
+						</div> -->
+						<div class="match-info-item">
+							<span class="fa fa-calendar"></span> {{match.startDate | date: 'dd/MM/yyyy'}}
+							&nbsp; &nbsp;
+							<span class="fa fa-clock-o"></span> 
+							{{match.startTime | myTimerange: match.duration}}
+						</div>
+						<!-- <div class="match-info-item">
+							<span class="match-info-item-label">Thời gian:</span>
+						</div> -->
+						<div class="match-info-item">
+							<button (click)="onSelect(match.id)" md-raised-button class="btn--white">{{LANG.VIEW}}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="loading" *ngIf="loading">
+			<div class="loading-mask"></div>
+			<img src="./src/app/assets/images/loading3.gif">
+		</div>
+	</div>
+
+</div>

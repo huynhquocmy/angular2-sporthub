@@ -1,0 +1,6 @@
+<div class="tip" *ngIf="message">
+	<div class="tip-content" [hidden]="!show">
+		{{message}}
+	</div>
+	<i class="fa fa-question-circle" (mouseover)="show=true" (mouseleave)="show=false"></i>
+</div>

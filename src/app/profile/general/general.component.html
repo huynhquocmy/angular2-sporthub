@@ -1,0 +1,71 @@
+<div class="profile-general">
+	<div class="profile-general-panel bg-image" style="background-image: url('src/app/assets/images/panel/panel-5.jpg');">
+		<div class="profile-general-mask"></div>
+
+		<div class="profile-general-panel-content" *ngIf="user && user.id">
+			<div class="skills-polygon">
+				<skills [user]="user"></skills>
+				<div class="skills-names">
+					<div class="skills-name skill-{{sk.id}}" *ngFor="let sk of skills">
+						<div>{{sk.name}}</div>
+					</div>
+				</div>
+			</div>
+			<div *ngIf="user && user.id">
+				<div *ngIf="user.avatar" class="profile-general-avatar bg-image" [ngStyle]="{'background-image': 'url(' + imgURI + user.avatar + ')'}"></div>
+
+				<div *ngIf="!user.avatar" class="profile-general-avatar bg-image"  style="background-image: url('src/app/assets/images/avatar/default-avatar.png');"></div>
+				<div class="profile-general-rating">
+					<span *ngIf="!user.rating" style="font-size: 13px; font-weight: lighter;">Chưa có đánh giá.</span>
+					<span *ngIf="user.rating">{{user.rating}}</span>
+					<i *ngIf="user.rating" class="fa fa-star active"></i>
+				</div>
+				<div class="profile-general-name">{{user.fullName}}</div>
+			</div>
+		</div>
+	</div>
+	<div class="profile-general-info">
+		<div class="profile-general-info-item">
+			<div class="profile-general-info-item-key">Tổ Chức</div>
+			<div class="profile-general-info-item-value">{{user.hostedMatches}}</div>
+		</div>
+		<div class="profile-general-info-item">
+			<div class="profile-general-info-item-key">Tham Gia</div>
+			<div class="profile-general-info-item-value">{{user.joinedMatches}}</div>
+		</div>
+		<div class="profile-general-info-item">
+			<div class="profile-general-info-item-key">Rating</div>
+			<div class="profile-general-info-item-value">{{user.rating | number:'1.0-1'}} / 5</div>
+		</div>
+		<!-- <div class="profile-general-info-item">
+			<div class="profile-general-info-item-key">Kỹ Năng</div>
+			<div class="profile-general-info-item-value">0</div>
+		</div>
+ -->
+	</div>
+	<div class="profile-reviews" *ngIf="!hideReviews && user.canBeReviewed">
+	<!-- <div class="profile-reviews"> -->
+		<h1>Đánh giá cầu thủ này</h1>
+		<div class="profile-reviews-content">
+			<div class="profile-reviews-item" *ngFor="let skill of skills">
+				<label>{{skill.name}}</label>
+				<div class="profile-reviews-stars">
+					<i class="fa fa-star" [ngClass]="{'active': skill.tempRating > 0}" (mouseover)='overStars(1, skill)' (mouseleave)='blurStars(skill)' (click)="selectStars(1, skill)"></i>
+					<i class="fa fa-star" [ngClass]="{'active': skill.tempRating > 1}" (mouseover)='overStars(2, skill)' (mouseleave)='blurStars(skill)' (click)="selectStars(2, skill)"></i>
+					<i class="fa fa-star" [ngClass]="{'active': skill.tempRating > 2}" (mouseover)='overStars(3, skill)' (mouseleave)='blurStars(skill)' (click)="selectStars(3, skill)"></i>
+					<i class="fa fa-star" [ngClass]="{'active': skill.tempRating > 3}" (mouseover)='overStars(4, skill)' (mouseleave)='blurStars(skill)' (click)="selectStars(4, skill)"></i>
+					<i class="fa fa-star" [ngClass]="{'active': skill.tempRating > 4}" (mouseover)='overStars(5, skill)' (mouseleave)='blurStars(skill)' (click)="selectStars(5, skill)"></i>
+				</div>
+			</div>
+			<div class="profile-reviews-item">
+				<div class="profile-reviews-comment">
+					<textarea [(ngModel)]="review.comment" placeholder="Viết đánh giá của bạn cho cầu thủ này"></textarea>
+					<div class="game-reviews-btns">
+						<button md-raised-button class="btn-green" (click)="reviewComment()">Gởi đánh giá</button>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<comments [reviews]="reviews"></comments>
+</div>

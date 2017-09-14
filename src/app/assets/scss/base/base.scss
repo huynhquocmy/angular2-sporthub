@@ -1,0 +1,165 @@
+@import 'variables.scss';
+
+body {
+  /*background-color: powderblue;*/
+  font-family: 'Nunito', sans-serif;
+  color: #393939;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+div, button {
+  outline: 0;
+}
+
+div {
+    max-width: 100%;
+}
+
+.game-map div {
+  max-width: initial;
+}
+
+.admin-map div {
+  max-width: initial !important;
+}
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////For input text///////////////////////////
+
+textarea {
+  padding-left: 8px;
+  background-color: white;
+  /*border-radius: $border-radius;
+*/
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////For input button/////////////////////////
+input[type="button"] {
+	padding-left: 5px;
+	height: 30px;
+	background-color: white;
+    box-shadow: 0 0 1px #bbb;
+	border-radius: 10px;
+}
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////For input checkbox/////////////////////////
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 25px;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left:0; top: 2px;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 3px;
+  box-shadow: 0 0 1px #bbb;
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713';
+  position: absolute;
+  top: 5px;
+  font-weight: bold;
+  left: 4px;
+  font-size: 14px;
+  line-height: 0.8;
+  color: #09ad7e;
+  transition: all .2s;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  border: 1px dotted blue;
+}
+
+/* hover style just for information */
+label:hover:before {
+  border: 1px solid #4778d9!important;
+}
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////For button///////////////////////////////
+
+button {
+	outline: 0;
+	padding: 8px 10px;
+	color: $color-black;
+	background-color: #ccc;
+	border: 0;
+	cursor: pointer;
+  font-size: 15px;
+  opacity: 0.8;
+  border-radius: 0;
+  font-family: work sans;
+  text-transform: uppercase;
+  /*box-shadow: 0 0 1px #bbb;*/
+  
+  &:hover {
+    opacity: 1;
+    transition: 0.3s;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+///////////////////////////////For select box///////////////////////////
+
+select {
+  padding-left: 5px;
+  height: 33px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: $border-radius-smallest;
+}

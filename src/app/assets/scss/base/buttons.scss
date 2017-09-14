@@ -1,0 +1,142 @@
+@import 'variables.scss';
+.btn__label {
+	color: $color-black;
+}
+
+.btn__i {
+	
+}
+
+i {
+	outline: 0;
+}
+
+.btn--ok {
+	background-color: $color-button;
+	color: $color-white;
+	opacity: 1;
+}
+
+.btn--blue {
+	background-color: $color-base-blue;
+	color: $color-white;
+	opacity: 1;
+}
+
+.btn-facebook {
+	background-color: #4267b2;
+	color: $color-white;
+	opacity: 1;
+}
+
+.btn--green {
+	background-color: $color-base-green;
+	color: $color-white !important;
+	opacity: 1;
+}
+
+.btn--red {
+	background-color: $color-base-red;
+	color: $color-white !important;
+	opacity: 1;
+}
+
+.btn--a {
+	display: block;
+	padding: 10px;
+	text-decoration: none;
+}
+
+.btn--primary {
+	background-color: $color-primary;
+	color: $color-white;
+	opacity: 1;
+}
+
+.btn--white {
+    background-color: white;
+    color: black !important;
+    opacity: 1;
+}
+
+.btn--delete {
+	background-color: $color-delete;
+	color: $color-white;
+	opacity: 1;
+}
+
+.btn--selected {
+	background-color: $color-selected;
+	color: $color-white;
+	opacity: 1;
+    /*font-weight: bold;
+*/
+}
+.btn--selected:hover {
+	background-color: #50c9f9;
+	color: white;
+}
+
+.btn--ok:hover {
+	background-color: $color-button-hover;
+	color: white;
+}
+
+.btn--cancel {
+	
+}
+
+.btn--notran {
+	transition: none !important;
+}
+
+.btn--disabled {
+	cursor: inherit;
+	color: gray !important;
+	background-color: $color-black--grayter !important;
+	opacity: 0.9 !important;
+}
+
+.btn-group {
+	position: relative;
+}
+
+.btn-group--left {
+    float: left;
+}
+
+.btn-group--right {
+    float: right;
+}
+
+.btn--icon {
+	padding: 7px 10px;
+}
+
+.btn--black {
+	background-color: $color-black;
+	color: white;
+}
+
+.btn--gray {
+	background-color: $color-black--grayter;
+	color: white;
+}
+
+.btn--header {
+    font-family: work sans;
+}
+.btn--lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+.btn--sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.btn--xs {
+    padding: 2px 5px;
+    font-size: 11px;
+}

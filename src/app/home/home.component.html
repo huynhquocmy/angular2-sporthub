@@ -1,0 +1,117 @@
+<div class="home-container">
+	<div class="home-section home-section-sliders">
+		<div class="slides">
+			<div class="slide-bg" style="background-image: url('./src/app/assets/images/panel/panel-1a.JPG');"></div>
+			<div class="slide-bg" style="background-image: url('./src/app/assets/images/panel/panel-2a.JPG');"></div>
+			<div class="slide-bg" style="background-image: url('./src/app/assets/images/panel/panel-3a.jpg');"></div>
+		</div>
+		<div class="home-mask">
+			<div class="mask-overlay"></div>
+			<div class="mask-content">
+				<div class="mask-text">
+					<div class="mask-text-item">
+						<h1>{{LANG.TITLE}}</h1>
+						<div class="mask-text-sub">{{LANG.SUBTITLE}}</div>
+					</div>
+				</div>
+				<div class="home-search">
+					<div class="home-search-item">
+						<md-select placeholder="Game" [(ngModel)]="game">
+						   <md-option *ngFor="let type of gameTypes" [value]="type.id">{{ type.name }}</md-option>
+						</md-select>
+					</div>
+					<div class="home-search-item">
+						<md-select placeholder="{{LANG.LOCATION}}" [(ngModel)]="location">
+						   <md-option *ngFor="let loc of locations" [value]="loc.id">{{ loc.name }}</md-option>
+						</md-select>
+					</div>
+					<div class="home-search-item">
+						<material-datepicker [rangeStart]="rangeStart" placeholder="{{LANG.SELECT_DATE}}" dateFormat="YYYY-MM-DD" [(date)]="date"></material-datepicker>
+					</div>
+					<div class="home-search-item home-search-btn">
+						<button (click)="filterGames()" md-raised-button class="btn-green">{{LANG.VIEW}}</button>
+					</div>
+				</div>
+			</div>
+			<div class="home-upcoming animated slideInRight" *ngIf="nextGame && nextGame.id" (click)="onSelectMatch()">
+				<div class="small-title">{{LANG.NEXT_MATCH}}</div>
+				<h1>{{nextGame.venueName}} ({{nextGame.gameTypeName}})</h1>
+				<div class="home-upcoming-content">
+					<div class="home-upcoming-item">
+						<span>{{nextGame.startTime | myTimerange: nextGame.duration}} | </span><span>{{nextGame.startDate | date: 'dd/MM/yyyy'}}</span>
+					</div>
+					<div class="home-upcoming-item">{{nextGame.venueAddress}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="home-section section-steps">
+		<h2 class="home-title">{{LANG.STEPS}}</h2>
+		<div class="home-steps">
+			<div class="home-step">
+				<div class="home-step-icon circle-1">1</div>
+				<div class="home-step-info">
+					<h2>{{LANG.CHOOSE_MATCH}}</h2>
+					<div class="home-step-des">{{LANG.CHOOSE_MATCH_DES}}.</div>
+				</div>
+			</div>
+			<div class="home-step">
+				<div class="home-step-icon circle-2">2</div>
+				<div class="home-step-info">
+					<h2>{{LANG.JOIN_MATCH}}</h2>
+					<div class="home-step-des">{{LANG.JOIN_MATCH_DES}}</div>
+				</div>
+			</div>
+			<div class="home-step">
+				<div class="home-step-icon circle-3">3</div>
+				<div class="home-step-info">
+					<h2>{{LANG.TRACK_MATCH}}</h2>
+					<div class="home-step-des">{{LANG.TRACK_MATCH_DES}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="home-section home-section-matches">
+		<h2 class="home-title">{{LANG.NEXT_MATCHES}}</h2>
+		<matches [matches]="matches"></matches>
+	</div>
+
+	<div class="home-section home-testimonial">
+		<div class="home-section-center">
+			<div class="testimonials">
+				<div class="testimonial">
+					<div class="testimonial-avatar bg-image" style="background-image: url('./src/app/assets/images/avatar/avatar.jpg');">
+					</div>
+					<div class="testimonial-say">
+						{{LANG.TESTIMONIAL_1}}
+					</div>
+					<div class="testimonial-info">
+						<span class="name">Huỳnh Quốc Mỹ</span>
+					</div>
+				</div>
+				<div class="testimonial">
+					<div class="testimonial-avatar bg-image" style="background-image: url('./src/app/assets/images/avatar/avatar2.jpg');">
+					</div>
+					<div class="testimonial-say">
+						{{LANG.TESTIMONIAL_2}}
+					</div>
+					<div class="testimonial-info">
+						<span class="name">Trần Duy Việt</span>
+					</div>
+				</div>
+				<div class="testimonial">
+					<div class="testimonial-avatar bg-image" style="background-image: url('./src/app/assets/images/avatar/avatar4.jpg');">
+					</div>
+					<div class="testimonial-say">
+						{{LANG.TESTIMONIAL_3}}
+					</div>
+					<div class="testimonial-info">
+						<span class="name">Nguyễn Bùi An Trung</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

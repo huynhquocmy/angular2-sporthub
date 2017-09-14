@@ -1,0 +1,11 @@
+.article-editor {
+    width: 500px;
+}
+.input-title {
+    font-size: 16px;
+    height: 50px;
+    transition: 0.7s;
+    &:focus {
+        font-size: 30px;
+    }
+}

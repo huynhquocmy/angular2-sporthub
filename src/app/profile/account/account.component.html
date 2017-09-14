@@ -1,0 +1,52 @@
+<div class="profile-account">
+	<div class="account-area box-shadow">
+		<div class="account-item">
+			<div class="account-item-label">Ảnh đại diện</div>
+			<div class="avatar bg-image" [ngStyle]="{'background-image': 'url(' + imgURI + user.avatar + ')'}">
+				<input name="file" type="file" (change)="upload($event)"/>
+				<input type="hidden" name="action" value="upload"/>
+				<div class="avatar-mask" *ngIf="!user.avatar">
+					<i class="fa fa-plus"></i>
+					<span>Ảnh đại diện</span>
+				</div>
+			</div>
+		</div>
+		<div class="account-item">
+			<div class="account-item-label">Họ tên <span class="red-star">* </span></div>
+			<input type="text" name="fulNname" [(ngModel)]="user.fullName">
+		</div>
+		<div class="account-item">
+			<div class="account-item-label">Email</div>
+			<input type="text" name="email" [(ngModel)]="user.email">
+		</div>
+		<div class="account-item">
+			<div class="account-item-label">Điện thoại <span class="red-star">* </span></div>
+			<input type="text" name="mobile" [(ngModel)]="user.mobile">
+		</div>
+		<div *ngIf="!isPassword">
+			<div class="link" (click)="isPassword = true">Cập nhật mật khẩu ?</div>
+		</div>
+		<div class="account-password" *ngIf="isPassword">
+			<div class="account-item">
+				<div class="account-item-label">Mật khẩu hiện tại <span class="red-star">* </span></div>
+				<input type="password" name="password" [(ngModel)]="user.password">
+			</div>
+			<div class="account-item">
+				<div class="account-item-label">Mật khẩu Mới <span class="red-star">* </span></div>
+				<input type="password" name="newPassword" [(ngModel)]="user.newPassword">
+			</div>
+			<div class="account-item">
+				<div class="account-item-label">Nhập lại mật khẩu mới <span class="red-star">* </span></div>
+				<input type="password" name="newPasswordAgain" [(ngModel)]="user.newPasswordAgain">
+			</div>
+		</div>
+		<div class="error-message">{{error}}</div>
+		<div class="success-message">{{success}}</div>
+	</div>
+	<div class="account-btns">
+		<div class="small-loading" *ngIf="loading">
+			<img src="./src/app/assets/images/loading.gif">
+		</div>
+		<button [disabled]="success !== ''" md-raised-button class="btn-green" (click)="update()">Cập Nhật</button>
+	</div>
+</div>

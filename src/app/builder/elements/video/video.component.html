@@ -1,0 +1,13 @@
+<div class="video-editor">
+	<div class="popup-header">
+		<h3>Đường dẫn tới youtube</h3>
+	</div>
+	<div class="popup-content">
+		<input [(ngModel)]="url" type="text" placeholder="https://www.youtube.com/watch?v=12345">
+	</div>
+	<div class="popup-footer">
+		<button (click)="close()" md-raised-button class="btn-white">Đóng</button>
+		<button (click)="save()" md-raised-button class="btn-green">Lưu</button>
+	</div>
+
+</div>

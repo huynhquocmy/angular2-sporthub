@@ -1,0 +1,82 @@
+<div class="host admin">
+	<div class="host-form box-shadow">
+		<form>
+			<div class="host-form-item host-form-both">
+				<div class="host-form-item-half">
+					<div class="form-label" [ngClass]="{'error-highlight': !model.name && error}">
+						<span>Tên sân</span>
+						<span class="red-star"> *</span>
+					</div>
+					<div class="form-item">
+					  	<input mdInput [(ngModel)]="model.name" name="name">
+					  	<!-- <input mdInput name="address" type="text" [(ngModel)] = "model.address"  (setAddress) = "getAddress($event)" googleplace/> -->
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<span>Số điện thoại</span>
+					</div>
+					<div class="form-item">
+					  	<input mdInput [(ngModel)]="model.mobile" name="mobile">
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label" [ngClass]="{'error-highlight': !model.locationId && error}">
+						<span>Quận</span>
+						<span class="red-star"> *</span>
+					</div>
+					<md-select name="locationId" [(ngModel)]="model.locationId">
+					   <md-option *ngFor="let type of locations" [value]="type.id">{{ type.name }}</md-option>
+					</md-select>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<span>Số tiền / giờ</span>
+						<tip [type]="3"></tip>
+					</div>
+					<div class="form-item">
+					  	<input mdInput [(ngModel)]="model.hourRate" name="hourRate">
+					</div>
+				</div>
+			</div>
+
+			<div class="host-form-item host-form-both">
+				<div class="host-form-item-half">
+					<div class="form-label" [ngClass]="{'error-highlight': !model.address && error}">
+						<span>Địa chỉ</span>
+						<span class="red-star"> *</span>
+					</div>
+					<div class="form-item">
+					  	<input mdInput name="address" type="text" [(ngModel)] = "model.address"  (setAddress) = "getAddress($event)" googleplace/>
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<span>Latitude</span>
+					</div>
+					<div class="form-item">
+					  	<input (ngModelChange)="initMapDebounce()" mdInput [(ngModel)]="model.latitude" name="latitude">
+					</div>
+				</div>
+				<div class="host-form-item-half">
+					<div class="form-label">
+						<span>Longitude</span>
+					</div>
+					<div class="form-item">
+					  	<input (ngModelChange)="initMapDebounce()" mdInput [(ngModel)]="model.longitude" name="longitude">
+					</div>
+				</div>
+			</div>
+
+			<div class="admin-map" id="admin-map">
+			</div>
+
+			<div class="error-message">{{error}}</div>
+
+			<div class="form-btn">
+				<button class="btn--green" md-raised-button (click)="save()">Save</button>
+			</div>
+			<div style="clear: both;"></div>
+		</form>
+	</div>
+</div>

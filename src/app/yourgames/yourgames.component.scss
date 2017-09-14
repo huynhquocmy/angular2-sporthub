@@ -1,0 +1,154 @@
+@import '../assets/scss/base/variables.scss';
+.yourgames {
+	padding-top: 63px;
+	margin: 0px auto;
+	box-sizing: border-box;
+	border: 1px solid $color-base-border;
+	background-color: #fafafa;
+	border-radius: 10px;
+	min-height: calc(100vh - 165px);
+}
+
+.top-container {
+	width: 1000px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	color: white;
+}
+
+.yourgames-top {
+	background-color: $color-base-green;
+}
+
+.top-title {
+	padding-top: 10px;
+	font-size: 30px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid $color-base-border;
+}
+
+.top-content {
+	display: flex;
+	padding: 20px 0;
+}
+
+.yourgames-content {
+	overflow: hidden;
+	width: 1000px;
+	margin: 20px auto;
+}
+
+.top-left {
+	h1 {
+		margin: 0;
+		font-size: 25px;
+	}
+}
+
+.top-right {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.top-item {
+    padding: 5px 0;
+    i {
+    	margin-right: 5px;
+    }
+}
+
+.col {
+    display: inline-block;
+    width: 30%;
+    padding: 5px;
+    font-size: 15px;
+    line-height: 25px;
+    i {
+    	margin-right: 5px;
+    }
+}
+
+.col-right {
+	text-align: right;
+}
+
+.content-matches {
+    border: 1px solid #eee;
+    margin-top: 5px;
+}
+
+.row {
+	cursor: pointer;
+	display: flex;
+	border-bottom: 1px solid #eee;
+	padding: 20px 5px;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid #fafafa;
+	&:hover {
+		background-color: $color-base-hover;
+		/*border-bottom: 1px solid $color-base-green;*/
+	}
+}
+
+.content-matches-title {
+	display: flex;
+	.content-title {
+		flex-grow: 1;
+		margin: 5px 0;
+		text-transform: uppercase;
+		font-size: 20px;
+	}
+	button {
+		i {
+			margin: 0 10px;
+			font-size: 30px;
+			position: relative;
+			top: -2px;
+			/*animation-iteration-count: infinite;*/
+		}
+	}
+}
+.yourgames-area {
+	transition-duration: 0.2s;
+}
+.next-tag {
+	background-color: #f4f4f4;
+    padding: 10px;
+    width: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    span {
+    	margin: 0 10px;
+    }
+}
+
+@media screen and (max-width: 972px) {
+	.content-matches-title {
+		display: block;
+		margin-bottom: 5px;
+		text-align: center;
+		h2 {
+			text-align: center !important;
+		}
+
+	}
+	.row {
+		padding: 10px 5px;
+	}
+	.col {
+		font-size: 13px;
+		line-height: 22px;
+	}
+	.top-right, .top-title, .top-content {
+		text-align: center;
+		display: block;
+	}
+	.top-item {
+		font-size: 15px;
+	}
+	.top-left h1 {
+		font-size: 17px;
+	}
+}

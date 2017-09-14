@@ -1,0 +1,13 @@
+.share {
+	background-color: #4267b2;
+	color: white;
+	margin: 5px;
+}
+
+@media screen and (max-width: 972px) {
+	.share {
+		a {
+			width: 100%;
+		}
+	}
+}

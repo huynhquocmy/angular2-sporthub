@@ -1,0 +1,322 @@
+@import '../../assets/scss/base/variables.scss';
+.game {
+	padding-top: 60px;
+	min-height: 100vh;
+}
+
+h2 {
+	margin-top: 0;
+}
+.game-panel {
+	height: 60vh;
+}
+.game-more {
+	width: 1000px;
+	margin: 0 auto;
+	background-color: #f4f4f4;
+	padding: 20px;
+	box-sizing: border-box;
+	display: flex;
+	button {
+		text-transform: none;
+		margin: 5px;
+	}
+}
+.game-content {
+	display: flex;
+    width: 1000px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background: #f4f4f4;
+    border: 1px solid #eee;
+}
+.game-content-left {
+	width: 70%;
+	padding: 50px 20px;
+	box-sizing: border-box;
+}
+.game-players {
+	li {
+		&:hover {
+			font-weight: bold;
+		}
+	}
+	.fa-home {
+		color: $color-base-green;
+		font-size: 20px;
+	}
+	pre {
+		font-size: 15px;
+		font-family: inherit;
+		line-height: 24px;
+		margin: 0;
+		white-space: pre-line;
+		word-wrap: break-word;
+	}
+}
+
+.game-players, .game-info {
+	li {
+		width: 50%;
+		float: left;
+		display: inline-block;
+		cursor: pointer;
+	}
+}
+
+.game-content {
+	ul {
+		line-height: 40px;
+		span {
+			margin-left: 10px;
+		}
+	}
+}
+
+.sebm-google-map-container {
+  	height: 400px;
+}
+
+.game-btn {
+	width: 30%;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 50px 20px;
+	button {
+		text-transform: capitalize;
+	}
+}
+
+.game-players {
+    margin-top: 20px;
+}
+.game-cancel {
+	text-align: center;
+}
+.game-map {
+	border: 1px solid #ccc;
+	width: 1000px;
+	margin: 0 auto;
+	margin-bottom: 100px;
+	height: 500px;
+}
+
+.game-status {
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 50px;
+    border-bottom: 1px solid $color-base-green;
+}
+
+.game-status-item {
+    display: flex;
+    label {
+    	width: 300px;
+    	font-size: 30px;
+    	font-weight: bold;
+    }
+    div {
+    	font-size: 25px;
+    	font-weight: bold;
+    	flex-grow: 1;
+    	text-align: right;
+    }
+}
+
+.game-form {
+    padding: 20px;
+    margin: 0 auto;
+    background: $color-base-green;
+    color: white;
+    border: 1px solid #F4f4f4;
+
+    label {
+    	font-size: 17px;
+    	display: block;
+    }
+
+    input {
+    	padding: 10px;
+    	margin: 10px 0;
+    	border: 1px solid #eee;
+    	box-sizing: border-box;
+    	outline: 0;
+    	background-color: white;
+    	width: 100%;
+    	height: 35px;
+    	color: #555;
+    }
+}
+
+.game-reviews {
+    width: 800px;
+    margin: 50px auto;
+    clear: both;
+    h1 {
+    	text-align: center;
+    	margin-bottom: 0;
+    	font-size: 25px;
+    }
+}
+
+.game-reviews-icons {
+    width: 400px;
+    margin: 0 auto;
+}
+.game-reviews-icon {
+    display: inline-block;
+    width: 32%;
+    text-align: center;
+    padding: 15px 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: #ccc;
+    font-weight: bold;
+    i {
+    	display: block;
+    	font-size: 50px;
+    	margin-bottom: 10px;
+    }
+
+    &:hover {
+    	color: $color-base-green;
+    	transition: 0.5s;
+    }
+}
+
+.game-reviews-icon.active {
+	color: $color-base-green;
+}
+
+.game-reviews-comment {
+	width: 500px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	overflow: hidden;
+	textarea {
+		height: 150px;
+		color: #555;
+		padding: 5px;
+		border: 1px solid #eee;
+		width: 100%;
+		outline: 0;
+		resize: none;
+		font-size: 14px;
+	}
+	label {
+		display: block;
+		margin-bottom: 10px;
+	}
+}
+
+.game-reviews-btns {
+	margin-top: 20px;
+	text-align: right;
+}
+
+.game-reviews-icons.disabled {
+	.game-reviews-icon {
+		 pointer-events: none;
+	}
+}
+
+.li-fullwidth {
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+@media screen and (max-width: 972px) {
+	.li-fullwidth {
+		clear: both;
+		width: 100% !important;
+	}
+	.game-content-left {
+		width: 100%;
+		padding: 0;
+	}
+	.game-form {
+		text-align: center;
+		input {
+			margin: 0;
+		}
+		label {
+			margin-bottom: 10px;
+			display: block;
+		}
+	}
+	.game-status-item {
+		display: block;
+		text-align: center;
+		div {
+			text-align: center;
+		}
+	}
+
+	.game-status {
+		padding: 25px 0;
+		padding-top: 25px;
+	}
+
+	.game-content {
+		display: block;
+		padding: 10px;
+	}
+	.game-info, .game-players {
+		width: 100%;
+		text-align: center;
+		ul {
+			li {
+				text-align: center;
+				font-size: 13px;
+				white-space: nowrap;
+			}
+		}
+		h2 {
+			text-align: center;
+			margin: 15px;
+		}
+	}
+
+	.game-info {
+		li {
+			text-align: center;
+			font-size: 13px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
+
+	.game-players {
+		ul li {
+			width: 100%;
+			float: none;
+		}
+	}
+
+	.sebm-google-map-container {
+		height: 300px;
+	}
+	.game-map {
+		margin-bottom: 0;
+		height: 300px;
+	}
+	.game-btn {
+		width: 100%;
+		clear: both;
+		button {
+			margin-top: 10px;
+		}
+
+	}
+	.game-status-item {
+		div {
+			font-size: 16px;
+		}
+	}
+	.game-more {
+		display: block;
+	}
+}
